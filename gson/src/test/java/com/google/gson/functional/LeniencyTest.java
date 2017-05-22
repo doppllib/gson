@@ -18,14 +18,18 @@ package com.google.gson.functional;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import java.util.List;
+
 import junit.framework.TestCase;
+
+import java.util.List;
+
 
 import static java.util.Collections.singletonList;
 
 /**
  * Functional tests for leniency option.
  */
+
 public class LeniencyTest extends TestCase {
 
   private Gson gson;

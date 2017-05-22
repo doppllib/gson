@@ -1,0 +1,50 @@
+apply plugin: 'java'
+apply plugin: 'net.ltgt.apt'
+apply plugin: 'co.touchlab.doppl.gradle'
+apply plugin: 'ivy-publish'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+dependencies {
+    compile 'junit:junit:4.11'
+    testApt "co.touchlab.doppl:testapt:$dopplCoreVersion"
+
+    provided "co.touchlab.doppl:androidbase:$dopplCoreVersion"
+    testCompile "co.touchlab.doppl:androidbasetest:$dopplCoreVersion"
+
+    doppl "co.touchlab.doppl:androidbase:$dopplCoreVersion:doppl"
+    testDoppl "co.touchlab.doppl:androidbasetest:$dopplCoreVersion:doppl"
+}
+
+group = 'com.google.code.gson'
+version = dopplGsonVersion
+
+publishing {
+    publications {
+        ivy(IvyPublication) {
+            from components.java
+            artifact(dopplArchive) {
+                classifier 'doppl'
+                extension 'jar'
+            }
+        }
+    }
+
+    repositories {
+        ivy { url dopplIvyDeploy }
+    }
+}
+
+test{
+    enabled = false
+}
+
+dopplConfig {
+
+    cycleFinderArgs '--whitelist', 'cycle_whitelist.txt'
+    copyMainOutput "../iostest/gsonframework/main"
+    copyTestOutput "../iostest/gsonframework/test"
+    copyDependencies true
+
+}

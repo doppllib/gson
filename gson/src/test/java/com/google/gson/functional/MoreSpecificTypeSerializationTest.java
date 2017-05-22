@@ -32,6 +32,7 @@ import java.util.Map;
  * @author Inderjeet Singh
  */
 @SuppressWarnings("unused")
+
 public class MoreSpecificTypeSerializationTest extends TestCase {
   private Gson gson;
 

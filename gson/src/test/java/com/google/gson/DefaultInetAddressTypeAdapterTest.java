@@ -16,15 +16,16 @@
 
 package com.google.gson;
 
-import java.net.InetAddress;
-
 import junit.framework.TestCase;
+
+import java.net.InetAddress;
 
 /**
  * Unit tests for the default serializer/deserializer for the {@code InetAddress} type.
  * 
  * @author Joel Leitch
  */
+
 public class DefaultInetAddressTypeAdapterTest extends TestCase {
   private Gson gson;
   

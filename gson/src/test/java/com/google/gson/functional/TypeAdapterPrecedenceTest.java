@@ -27,9 +27,12 @@ import com.google.gson.JsonSerializer;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+
+import junit.framework.TestCase;
+
 import java.io.IOException;
 import java.lang.reflect.Type;
-import junit.framework.TestCase;
+
 
 public final class TypeAdapterPrecedenceTest extends TestCase {
   public void testNonstreamingFollowedByNonstreaming() {

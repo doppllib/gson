@@ -23,13 +23,13 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import com.google.gson.common.TestTypes.BagOfPrimitives;
 import com.google.gson.common.TestTypes.ClassOverridingEquals;
-
 import com.google.gson.reflect.TypeToken;
-import java.util.Arrays;
-import java.util.List;
+
 import junit.framework.TestCase;
 
 import java.lang.reflect.Type;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Functional tests that do not fall neatly into any of the existing classification.
@@ -37,6 +37,7 @@ import java.lang.reflect.Type;
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class UncategorizedTest extends TestCase {
 
   private Gson gson = null;

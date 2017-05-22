@@ -30,6 +30,7 @@ import java.util.List;
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class FieldAttributesTest extends TestCase {
   private FieldAttributes fieldAttributes;
 

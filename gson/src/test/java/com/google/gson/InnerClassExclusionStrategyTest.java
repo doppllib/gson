@@ -17,14 +17,17 @@
 package com.google.gson;
 
 import com.google.gson.internal.Excluder;
-import java.lang.reflect.Field;
+
 import junit.framework.TestCase;
+
+import java.lang.reflect.Field;
 
 /**
  * Unit test for GsonBuilder.EXCLUDE_INNER_CLASSES.
  *
  * @author Joel Leitch
  */
+
 public class InnerClassExclusionStrategyTest extends TestCase {
   public InnerClass innerClass = new InnerClass();
   public StaticNestedClass staticNestedClass = new StaticNestedClass();

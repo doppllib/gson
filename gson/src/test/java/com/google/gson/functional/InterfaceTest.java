@@ -26,6 +26,7 @@ import junit.framework.TestCase;
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class InterfaceTest extends TestCase {
   private static final String OBJ_JSON = "{\"someStringValue\":\"StringValue\"}";
 

@@ -16,20 +16,22 @@
 
 package com.google.gson.functional;
 
-import java.lang.reflect.Type;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.InstanceCreator;
 import com.google.gson.annotations.Expose;
+import com.google.gson.doppl.JsonCompare;
 
 import junit.framework.TestCase;
+
+import java.lang.reflect.Type;
 
 /**
  * Unit tests for the regarding functional "@Expose" type tests.
  *
  * @author Joel Leitch
  */
+
 public class ExposeFieldsTest extends TestCase {
 
   private Gson gson;
@@ -63,12 +65,12 @@ public class ExposeFieldsTest extends TestCase {
         .append(object3.getExpectedJson()).append(']')
         .toString();
 
-    assertEquals(expected, json);
+    JsonCompare.jsonSameAssert(expected, json);
   }
 
   public void testExposeAnnotationSerialization() throws Exception {
     ClassWithExposedFields target = new ClassWithExposedFields(1, 2);
-    assertEquals(target.getExpectedJson(), gson.toJson(target));
+    JsonCompare.jsonSameAssert(target.getExpectedJson(), gson.toJson(target));
   }
 
   public void testExposeAnnotationDeserialization() throws Exception {

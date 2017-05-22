@@ -31,6 +31,7 @@ import java.util.List;
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class ParameterizedTypeTest extends TestCase {
   private ParameterizedType ourType;
 

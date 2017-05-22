@@ -20,9 +20,9 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonStreamParser;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.common.TestTypes.BagOfPrimitives;
-
+import com.google.gson.doppl.JsonCompare;
 import com.google.gson.reflect.TypeToken;
-import java.util.Map;
+
 import junit.framework.TestCase;
 
 import java.io.CharArrayReader;
@@ -32,6 +32,7 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.Map;
 
 /**
  * Functional tests for the support of {@link Reader}s and {@link Writer}s.
@@ -39,6 +40,7 @@ import java.io.Writer;
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class ReadersWritersTest extends TestCase {
   private Gson gson;
 
@@ -52,7 +54,8 @@ public class ReadersWritersTest extends TestCase {
     Writer writer = new StringWriter();
     BagOfPrimitives src = new BagOfPrimitives();
     gson.toJson(src, writer);
-    assertEquals(src.getExpectedJson(), writer.toString());
+    JsonCompare.jsonSameAssert(src.getExpectedJson(), writer.toString());
+//    assertEquals(src.getExpectedJson(), writer.toString());
   }
 
   public void testReaderForDeserialization() throws Exception {

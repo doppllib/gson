@@ -17,6 +17,8 @@
 
 package com.google.gson.internal;
 
+import com.google.j2objc.annotations.WeakOuter;
+
 import java.io.ObjectStreamException;
 import java.io.Serializable;
 import java.util.AbstractMap;
@@ -452,6 +454,7 @@ public final class LinkedHashTreeMap<K, V> extends AbstractMap<K, V> implements 
   }
 
   private EntrySet entrySet;
+
   private KeySet keySet;
 
   @Override public Set<Entry<K, V>> entrySet() {
@@ -791,6 +794,7 @@ public final class LinkedHashTreeMap<K, V> extends AbstractMap<K, V> implements 
     }
   }
 
+  @WeakOuter
   final class EntrySet extends AbstractSet<Entry<K, V>> {
     @Override public int size() {
       return size;
@@ -826,6 +830,7 @@ public final class LinkedHashTreeMap<K, V> extends AbstractMap<K, V> implements 
     }
   }
 
+  @WeakOuter
   final class KeySet extends AbstractSet<K> {
     @Override public int size() {
       return size;

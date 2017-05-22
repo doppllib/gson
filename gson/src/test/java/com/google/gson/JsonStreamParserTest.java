@@ -24,6 +24,7 @@ import java.util.NoSuchElementException;
  * 
  * @author Inderjeet Singh
  */
+
 public class JsonStreamParserTest extends TestCase {
   private JsonStreamParser parser;
   

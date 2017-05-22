@@ -25,6 +25,7 @@ import junit.framework.TestCase;
  *
  * @author Joel Leitch
  */
+
 public class JsonObjectTest extends TestCase {
 
   public void testAddingAndRemovingObjectProperties() throws Exception {

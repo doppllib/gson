@@ -16,13 +16,14 @@
 package com.google.gson.functional;
 
 import com.google.gson.Gson;
-
+import com.google.gson.doppl.JsonCompare;
 import com.google.gson.reflect.TypeToken;
-import java.lang.reflect.Type;
-import java.util.Arrays;
+
 import junit.framework.TestCase;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +34,7 @@ import java.util.Map;
  *
  * @author Joel Leitch
  */
+
 public class TypeVariableTest extends TestCase {
 
   public void testAdvancedTypeVariables() throws Exception {
@@ -56,7 +58,7 @@ public class TypeVariableTest extends TestCase {
     original.map.put("f", Arrays.asList(6, 7));
     Type type = new TypeToken<Foo<String, Integer>>() {}.getType();
     String json = gson.toJson(original, type);
-    assertEquals("{\"someSField\":\"e\",\"someTField\":5,\"map\":{\"f\":[6,7]},\"redField\":false}",
+    JsonCompare.jsonSameAssert("{\"someSField\":\"e\",\"someTField\":5,\"map\":{\"f\":[6,7]},\"redField\":false}",
         json);
     assertEquals(original, gson.<Foo<String, Integer>>fromJson(json, type));
   }

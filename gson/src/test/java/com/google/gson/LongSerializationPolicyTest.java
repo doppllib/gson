@@ -24,6 +24,7 @@ import junit.framework.TestCase;
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class LongSerializationPolicyTest extends TestCase {
 
   public void testDefaultLongSerialization() throws Exception {

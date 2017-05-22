@@ -26,12 +26,15 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-import java.lang.reflect.Type;
+
 import junit.framework.TestCase;
+
+import java.lang.reflect.Type;
 
 /**
  * Test that the hierarchy adapter works when subtypes are used.
  */
+
 public final class TypeHierarchyAdapterTest extends TestCase {
 
   public void testTypeHierarchy() {

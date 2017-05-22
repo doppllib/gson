@@ -16,13 +16,14 @@
 
 package com.google.gson;
 
-import junit.framework.TestCase;
-
 import com.google.gson.common.MoreAsserts;
+
+import junit.framework.TestCase;
 
 /**
  * @author Jesse Wilson
  */
+
 public final class JsonArrayTest extends TestCase {
 
   public void testEqualsOnEmptyArray() {

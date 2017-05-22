@@ -31,6 +31,7 @@ import java.util.List;
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class GenericArrayTypeTest extends TestCase {
   private GenericArrayType ourType;
 

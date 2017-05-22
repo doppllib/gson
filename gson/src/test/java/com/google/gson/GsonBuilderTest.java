@@ -16,19 +16,20 @@
 
 package com.google.gson;
 
-import java.lang.reflect.Modifier;
-import java.lang.reflect.Type;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 
 import junit.framework.TestCase;
 
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import java.lang.reflect.Modifier;
+import java.lang.reflect.Type;
 
 /**
  * Unit tests for {@link GsonBuilder}.
  *
  * @author Inderjeet Singh
  */
+
 public class GsonBuilderTest extends TestCase {
   private static final TypeAdapter<Object> NULL_TYPE_ADAPTER = new TypeAdapter<Object>() {
     @Override public void write(JsonWriter out, Object value) {

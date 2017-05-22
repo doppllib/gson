@@ -10,6 +10,7 @@ import junit.framework.TestCase;
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class StringTest extends TestCase {
   private Gson gson;
 

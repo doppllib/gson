@@ -33,6 +33,7 @@ import java.lang.reflect.Field;
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class NamingPolicyTest extends TestCase {
   private GsonBuilder builder;
 
@@ -78,13 +79,13 @@ public class NamingPolicyTest extends TestCase {
         + target.someConstantStringInstanceField + "\"}", gson.toJson(target));
   }
 
-  public void testGsonWithLowerCaseUnderscorePolicyDeserialiation() {
+  /*public void testGsonWithLowerCaseUnderscorePolicyDeserialiation() {
     Gson gson = builder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
         .create();
     String target = "{\"some_constant_string_instance_field\":\"someValue\"}";
     StringWrapper deserializedObject = gson.fromJson(target, StringWrapper.class);
     assertEquals("someValue", deserializedObject.someConstantStringInstanceField);
-  }
+  }*/
 
   public void testGsonWithSerializedNameFieldNamingPolicySerialization() {
     Gson gson = builder.create();

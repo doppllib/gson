@@ -22,13 +22,15 @@ import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.LongSerializationPolicy;
 import com.google.gson.reflect.TypeToken;
+
+import junit.framework.TestCase;
+
 import java.io.Serializable;
 import java.io.StringReader;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
-import junit.framework.TestCase;
 
 /**
  * Functional tests for Json primitive values: integers, and floating point numbers.
@@ -36,6 +38,7 @@ import junit.framework.TestCase;
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class PrimitiveTest extends TestCase {
   private Gson gson;
 

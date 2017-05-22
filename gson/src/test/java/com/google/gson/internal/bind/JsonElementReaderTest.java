@@ -19,10 +19,13 @@ package com.google.gson.internal.bind;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonToken;
-import java.io.IOException;
+
 import junit.framework.TestCase;
 
+import java.io.IOException;
+
 @SuppressWarnings("resource")
+
 public final class JsonElementReaderTest extends TestCase {
 
   public void testNumbers() throws IOException {

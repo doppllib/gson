@@ -23,6 +23,7 @@ import com.google.gson.reflect.TypeToken;
 
 import junit.framework.TestCase;
 
+
 public class JsonAdapterNullSafeTest extends TestCase {
   private final Gson gson = new Gson();
 

@@ -22,13 +22,13 @@ import com.google.gson.InstanceCreator;
 import com.google.gson.common.TestTypes.Base;
 import com.google.gson.common.TestTypes.ClassWithBaseField;
 import com.google.gson.common.TestTypes.Sub;
-
 import com.google.gson.reflect.TypeToken;
-import java.util.ArrayList;
-import java.util.List;
+
 import junit.framework.TestCase;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -38,6 +38,7 @@ import java.util.TreeSet;
  *
  * @author Inderjeet Singh
  */
+
 public class InstanceCreatorTest extends TestCase {
 
   public void testInstanceCreatorReturnsBaseType() {

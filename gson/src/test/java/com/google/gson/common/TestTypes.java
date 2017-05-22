@@ -16,9 +16,6 @@
 
 package com.google.gson.common;
 
-import java.lang.reflect.Type;
-import java.util.Collection;
-
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -28,6 +25,11 @@ import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import com.google.gson.annotations.SerializedName;
+
+import java.lang.reflect.Type;
+import java.util.Collection;
+
+import co.touchlab.doppl.utils.PlatformUtils;
 
 /**
  * Types used for testing JSON serialization and deserialization
@@ -124,12 +126,22 @@ public class TestTypes {
       return intValue;
     }
 
+    //A little hacky for j2objc, but doesn't change the meaning of the test
     public String getExpectedJson() {
       StringBuilder sb = new StringBuilder();
       sb.append("{");
       sb.append("\"longValue\":").append(longValue).append(",");
-      sb.append("\"intValue\":").append(intValue).append(",");
-      sb.append("\"booleanValue\":").append(booleanValue).append(",");
+
+      if(PlatformUtils.isJ2objc())
+      {
+        sb.append("\"booleanValue\":").append(booleanValue).append(",");
+        sb.append("\"intValue\":").append(intValue).append(",");
+      }
+      else
+      {
+        sb.append("\"intValue\":").append(intValue).append(",");
+        sb.append("\"booleanValue\":").append(booleanValue).append(",");
+      }
       sb.append("\"stringValue\":\"").append(stringValue).append("\"");
       sb.append("}");
       return sb.toString();

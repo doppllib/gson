@@ -16,13 +16,15 @@
 
 package com.google.gson.stream;
 
+import junit.framework.TestCase;
+
 import java.io.IOException;
 import java.io.StringWriter;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import junit.framework.TestCase;
 
 @SuppressWarnings("resource")
+
 public final class JsonWriterTest extends TestCase {
 
   public void testTopLevelValueTypes() throws IOException {

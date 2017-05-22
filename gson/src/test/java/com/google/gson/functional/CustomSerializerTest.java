@@ -40,6 +40,7 @@ import java.lang.reflect.Type;
  *
  * @author Inderjeet Singh
  */
+
 public class CustomSerializerTest extends TestCase {
 
    public void testBaseClassSerializerInvokedForBaseClassFields() {

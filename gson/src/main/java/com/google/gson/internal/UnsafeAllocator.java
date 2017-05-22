@@ -18,8 +18,9 @@ package com.google.gson.internal;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectStreamClass;
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+
+import sun.misc.Unsafe;
 
 /**
  * Do sneaky things to allocate objects without invoking their constructors.
@@ -36,17 +37,16 @@ public abstract class UnsafeAllocator {
     //   public Object allocateInstance(Class<?> type);
     // }
     try {
-      Class<?> unsafeClass = Class.forName("sun.misc.Unsafe");
-      Field f = unsafeClass.getDeclaredField("theUnsafe");
-      f.setAccessible(true);
-      final Object unsafe = f.get(null);
+      //j2objc couldn't find field by reflection
+      final Object unsafe = Unsafe.getUnsafe();
+      Class<?> unsafeClass = unsafe.getClass();
       final Method allocateInstance = unsafeClass.getMethod("allocateInstance", Class.class);
       return new UnsafeAllocator() {
         @Override
         @SuppressWarnings("unchecked")
         public <T> T newInstance(Class<T> c) throws Exception {
-          return (T) allocateInstance.invoke(unsafe, c);
-        }
+            return (T) allocateInstance.invoke(unsafe, c);
+          }
       };
     } catch (Exception ignored) {
     }

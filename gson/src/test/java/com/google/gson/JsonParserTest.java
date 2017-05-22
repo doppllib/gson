@@ -16,21 +16,22 @@
 
 package com.google.gson;
 
-import java.io.CharArrayReader;
-import java.io.CharArrayWriter;
-import java.io.StringReader;
-
-import junit.framework.TestCase;
-
 import com.google.gson.common.TestTypes.BagOfPrimitives;
 import com.google.gson.internal.Streams;
 import com.google.gson.stream.JsonReader;
+
+import junit.framework.TestCase;
+
+import java.io.CharArrayReader;
+import java.io.CharArrayWriter;
+import java.io.StringReader;
 
 /**
  * Unit test for {@link JsonParser}
  *
  * @author Inderjeet Singh
  */
+
 public class JsonParserTest extends TestCase {
   private JsonParser parser;
 

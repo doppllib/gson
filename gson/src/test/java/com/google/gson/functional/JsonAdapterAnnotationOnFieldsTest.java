@@ -24,12 +24,15 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+
 import junit.framework.TestCase;
+
+import java.io.IOException;
 
 /**
  * Functional tests for the {@link com.google.gson.annotations.JsonAdapter} annotation on fields.
  */
+
 public final class JsonAdapterAnnotationOnFieldsTest extends TestCase {
   public void testClassAnnotationAdapterTakesPrecedenceOverDefault() {
     Gson gson = new Gson();

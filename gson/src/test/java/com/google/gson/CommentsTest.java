@@ -17,13 +17,16 @@
 package com.google.gson;
 
 import com.google.gson.reflect.TypeToken;
+
+import junit.framework.TestCase;
+
 import java.util.Arrays;
 import java.util.List;
-import junit.framework.TestCase;
 
 /**
  * @author Jesse Wilson
  */
+
 public final class CommentsTest extends TestCase {
 
   /**

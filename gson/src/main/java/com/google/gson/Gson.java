@@ -54,6 +54,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 import com.google.gson.stream.MalformedJsonException;
+import com.google.j2objc.annotations.Weak;
 
 /**
  * This is the main class for using Gson. Gson is typically used by first constructing a
@@ -132,6 +133,7 @@ public final class Gson {
   private final boolean prettyPrinting;
   private final boolean lenient;
 
+  @Weak
   final JsonDeserializationContext deserializationContext = new JsonDeserializationContext() {
     @SuppressWarnings("unchecked")
     @Override public <T> T deserialize(JsonElement json, Type typeOfT) throws JsonParseException {
@@ -139,6 +141,7 @@ public final class Gson {
     }
   };
 
+  @Weak
   final JsonSerializationContext serializationContext = new JsonSerializationContext() {
     @Override public JsonElement serialize(Object src) {
       return toJsonTree(src);

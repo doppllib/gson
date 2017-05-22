@@ -16,11 +16,13 @@
 
 package com.google.gson;
 
+import junit.framework.TestCase;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import junit.framework.TestCase;
+
 
 public final class ObjectTypeAdapterTest extends TestCase {
   private final Gson gson = new GsonBuilder().create();

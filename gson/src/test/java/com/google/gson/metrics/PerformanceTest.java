@@ -37,6 +37,7 @@ import java.util.Map;
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class PerformanceTest extends TestCase {
   private static final int COLLECTION_SIZE = 5000;
 

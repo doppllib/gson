@@ -16,16 +16,17 @@
 
 package com.google.gson.functional;
 
-import java.util.Currency;
-import java.util.Properties;
-
 import com.google.gson.Gson;
 
 import junit.framework.TestCase;
 
+import java.util.Currency;
+import java.util.Properties;
+
 /**
  * Functional test for Json serialization and deserialization for classes in java.util
  */
+
 public class JavaUtilTest extends TestCase {
   private Gson gson;
 

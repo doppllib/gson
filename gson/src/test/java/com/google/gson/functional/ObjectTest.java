@@ -33,7 +33,11 @@ import com.google.gson.common.TestTypes.ClassWithObjects;
 import com.google.gson.common.TestTypes.ClassWithTransientFields;
 import com.google.gson.common.TestTypes.Nested;
 import com.google.gson.common.TestTypes.PrimitiveArray;
+import com.google.gson.doppl.JsonCompare;
 import com.google.gson.reflect.TypeToken;
+
+import junit.framework.TestCase;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -43,7 +47,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
-import junit.framework.TestCase;
 
 /**
  * Functional tests for Json serialization and deserialization of regular classes.
@@ -51,6 +54,7 @@ import junit.framework.TestCase;
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class ObjectTest extends TestCase {
   private Gson gson;
   private TimeZone oldTimeZone = TimeZone.getDefault();
@@ -87,7 +91,8 @@ public class ObjectTest extends TestCase {
 
   public void testBagOfPrimitivesSerialization() throws Exception {
     BagOfPrimitives target = new BagOfPrimitives(10, 20, false, "stringValue");
-    assertEquals(target.getExpectedJson(), gson.toJson(target));
+//    assertEquals(target.getExpectedJson(), gson.toJson(target));
+    JsonCompare.jsonSameAssert(target.getExpectedJson(), gson.toJson(target));
   }
 
   public void testBagOfPrimitivesDeserialization() throws Exception {
@@ -99,7 +104,8 @@ public class ObjectTest extends TestCase {
 
   public void testBagOfPrimitiveWrappersSerialization() throws Exception {
     BagOfPrimitiveWrappers target = new BagOfPrimitiveWrappers(10L, 20, false);
-    assertEquals(target.getExpectedJson(), gson.toJson(target));
+//    assertEquals(target.getExpectedJson(), gson.toJson(target));
+    JsonCompare.jsonSameAssert(target.getExpectedJson(), gson.toJson(target));
   }
 
   public void testBagOfPrimitiveWrappersDeserialization() throws Exception {
@@ -127,23 +133,24 @@ public class ObjectTest extends TestCase {
     String json = "{\"transientLongValue\":1,\"longValue\":[1]}";
     ClassWithTransientFields target = gson.fromJson(json, ClassWithTransientFields.class);
     assertFalse(target.transientLongValue != 1);
-  }
+    }
 
   public void testClassWithNoFieldsSerialization() throws Exception {
     assertEquals("{}", gson.toJson(new ClassWithNoFields()));
-  }
+    }
 
   public void testClassWithNoFieldsDeserialization() throws Exception {
     String json = "{}";
     ClassWithNoFields target = gson.fromJson(json, ClassWithNoFields.class);
     ClassWithNoFields expected = new ClassWithNoFields();
     assertEquals(expected, target);
-  }
+    }
 
   public void testNestedSerialization() throws Exception {
     Nested target = new Nested(new BagOfPrimitives(10, 20, false, "stringValue"),
        new BagOfPrimitives(30, 40, true, "stringValue"));
-    assertEquals(target.getExpectedJson(), gson.toJson(target));
+//    assertEquals(target.getExpectedJson(), gson.toJson(target));
+    JsonCompare.jsonSameAssert(target.getExpectedJson(), gson.toJson(target));
   }
 
   public void testNestedDeserialization() throws Exception {
@@ -151,7 +158,7 @@ public class ObjectTest extends TestCase {
         + "\"stringValue\":\"stringValue\"},\"primitive2\":{\"longValue\":30,\"intValue\":40,"
         + "\"booleanValue\":true,\"stringValue\":\"stringValue\"}}";
     Nested target = gson.fromJson(json, Nested.class);
-    assertEquals(json, target.getExpectedJson());
+    JsonCompare.jsonSameAssert(json, target.getExpectedJson());
   }
   public void testNullSerialization() throws Exception {
     assertEquals("null", gson.toJson(null));
@@ -178,19 +185,21 @@ public class ObjectTest extends TestCase {
 
   public void testNullFieldsSerialization() throws Exception {
     Nested target = new Nested(new BagOfPrimitives(10, 20, false, "stringValue"), null);
-    assertEquals(target.getExpectedJson(), gson.toJson(target));
+    JsonCompare.jsonSameAssert(target.getExpectedJson(), gson.toJson(target));
+//    assertEquals(target.getExpectedJson(), gson.toJson(target));
   }
 
   public void testNullFieldsDeserialization() throws Exception {
     String json = "{\"primitive1\":{\"longValue\":10,\"intValue\":20,\"booleanValue\":false"
         + ",\"stringValue\":\"stringValue\"}}";
     Nested target = gson.fromJson(json, Nested.class);
-    assertEquals(json, target.getExpectedJson());
+    JsonCompare.jsonSameAssert(json, target.getExpectedJson());
   }
 
   public void testArrayOfObjectsSerialization() throws Exception {
     ArrayOfObjects target = new ArrayOfObjects();
-    assertEquals(target.getExpectedJson(), gson.toJson(target));
+//    assertEquals(target.getExpectedJson(), gson.toJson(target));
+    JsonCompare.jsonSameAssert(target.getExpectedJson(), gson.toJson(target));
   }
 
   public void testArrayOfObjectsDeserialization() throws Exception {
@@ -201,7 +210,8 @@ public class ObjectTest extends TestCase {
 
   public void testArrayOfArraysSerialization() throws Exception {
     ArrayOfArrays target = new ArrayOfArrays();
-    assertEquals(target.getExpectedJson(), gson.toJson(target));
+//    assertEquals(target.getExpectedJson(), gson.toJson(target));
+    JsonCompare.jsonSameAssert(target.getExpectedJson(), gson.toJson(target));
   }
 
   public void testArrayOfArraysDeserialization() throws Exception {
@@ -463,17 +473,17 @@ public class ObjectTest extends TestCase {
   public void testSingletonLists() {
     Gson gson = new Gson();
     Product product = new Product();
-    assertEquals("{\"attributes\":[],\"departments\":[]}",
+    JsonCompare.jsonSameAssert("{\"attributes\":[],\"departments\":[]}",
         gson.toJson(product));
     gson.fromJson(gson.toJson(product), Product.class);
 
     product.departments.add(new Department());
-    assertEquals("{\"attributes\":[],\"departments\":[{\"name\":\"abc\",\"code\":\"123\"}]}",
+    JsonCompare.jsonSameAssert("{\"attributes\":[],\"departments\":[{\"name\":\"abc\",\"code\":\"123\"}]}",
         gson.toJson(product));
     gson.fromJson(gson.toJson(product), Product.class);
 
     product.attributes.add("456");
-    assertEquals("{\"attributes\":[\"456\"],\"departments\":[{\"name\":\"abc\",\"code\":\"123\"}]}",
+    JsonCompare.jsonSameAssert("{\"attributes\":[\"456\"],\"departments\":[{\"name\":\"abc\",\"code\":\"123\"}]}",
         gson.toJson(product));
     gson.fromJson(gson.toJson(product), Product.class);
   }

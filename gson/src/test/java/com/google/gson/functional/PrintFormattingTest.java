@@ -35,6 +35,7 @@ import java.util.List;
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class PrintFormattingTest extends TestCase {
 
   private Gson gson;

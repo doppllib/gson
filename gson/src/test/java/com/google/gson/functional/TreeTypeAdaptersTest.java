@@ -16,14 +16,6 @@
 
 package com.google.gson.functional;
 
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import junit.framework.TestCase;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
@@ -35,9 +27,18 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import com.google.gson.reflect.TypeToken;
 
+import junit.framework.TestCase;
+
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Collection of functional tests for DOM tree based type adapters.
  */
+
 public class TreeTypeAdaptersTest extends TestCase {
   private static final Id<Student> STUDENT1_ID = new Id<Student>("5", Student.class);
   private static final Id<Student> STUDENT2_ID = new Id<Student>("6", Student.class);

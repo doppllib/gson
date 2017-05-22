@@ -18,13 +18,16 @@ package com.google.gson;
 
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+
+import junit.framework.TestCase;
+
 import java.io.IOException;
 import java.util.Locale;
-import junit.framework.TestCase;
 
 /**
  * @author Jesse Wilson
  */
+
 public class OverrideCoreTypeAdaptersTest extends TestCase {
   private static final TypeAdapter<Boolean> booleanAsIntAdapter = new TypeAdapter<Boolean>() {
     @Override public void write(JsonWriter out, Boolean value) throws IOException {

@@ -16,9 +16,9 @@
 
 package com.google.gson.functional;
 
-import junit.framework.TestCase;
-
 import com.google.gson.Gson;
+
+import junit.framework.TestCase;
 
 /**
  * Functional tests for Java Character values.
@@ -26,6 +26,7 @@ import com.google.gson.Gson;
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class PrimitiveCharacterTest extends TestCase {
   private Gson gson;
 

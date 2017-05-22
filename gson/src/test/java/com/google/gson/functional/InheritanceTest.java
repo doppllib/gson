@@ -26,9 +26,12 @@ import com.google.gson.common.TestTypes.ClassWithBaseCollectionField;
 import com.google.gson.common.TestTypes.ClassWithBaseField;
 import com.google.gson.common.TestTypes.Nested;
 import com.google.gson.common.TestTypes.Sub;
+import com.google.gson.doppl.JsonCompare;
 
 import junit.framework.TestCase;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -38,6 +41,9 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import co.touchlab.doppl.testing.DopplHacks;
+import sun.misc.Unsafe;
+
 /**
  * Functional tests for Json serialization and deserialization of classes with 
  * inheritance hierarchies.
@@ -45,6 +51,7 @@ import java.util.TreeSet;
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class InheritanceTest extends TestCase {
   private Gson gson;
 
@@ -57,16 +64,22 @@ public class InheritanceTest extends TestCase {
   public void testSubClassSerialization() throws Exception {
     SubTypeOfNested target = new SubTypeOfNested(new BagOfPrimitives(10, 20, false, "stringValue"),
         new BagOfPrimitives(30, 40, true, "stringValue"));
-    assertEquals(target.getExpectedJson(), gson.toJson(target));
+    JsonCompare.jsonSameAssert(target.getExpectedJson(), gson.toJson(target));
   }
 
+  public void testBasicFinals() throws Exception {
+    BasicFinal basicFinal = new BasicFinal();
+    String expectedJson = basicFinal.getExpectedJson();
+    String generatedJson = gson.toJson(basicFinal);
+    JsonCompare.jsonSameAssert(expectedJson, generatedJson);
+  }
   public void testSubClassDeserialization() throws Exception {
     String json = "{\"value\":5,\"primitive1\":{\"longValue\":10,\"intValue\":20,"
         + "\"booleanValue\":false,\"stringValue\":\"stringValue\"},\"primitive2\":"
         + "{\"longValue\":30,\"intValue\":40,\"booleanValue\":true,"
         + "\"stringValue\":\"stringValue\"}}";
     SubTypeOfNested target = gson.fromJson(json, SubTypeOfNested.class);
-    assertEquals(json, target.getExpectedJson());
+    JsonCompare.jsonSameAssert(json, target.getExpectedJson());
   }
 
   public void testClassWithBaseFieldSerialization() {
@@ -81,7 +94,7 @@ public class InheritanceTest extends TestCase {
     ClassWithBaseArrayField sub = new ClassWithBaseArrayField(baseClasses);
     JsonObject json = gson.toJsonTree(sub).getAsJsonObject();
     JsonArray bases = json.get(ClassWithBaseArrayField.FIELD_KEY).getAsJsonArray();
-    for (JsonElement element : bases) { 
+    for (JsonElement element : bases) {
       assertEquals(Sub.SUB_NAME, element.getAsJsonObject().get(Sub.SUB_FIELD_KEY).getAsString());
     }
   }
@@ -93,7 +106,7 @@ public class InheritanceTest extends TestCase {
     ClassWithBaseCollectionField sub = new ClassWithBaseCollectionField(baseClasses);
     JsonObject json = gson.toJsonTree(sub).getAsJsonObject();
     JsonArray bases = json.get(ClassWithBaseArrayField.FIELD_KEY).getAsJsonArray();
-    for (JsonElement element : bases) { 
+    for (JsonElement element : bases) {
       assertEquals(Sub.SUB_NAME, element.getAsJsonObject().get(Sub.SUB_FIELD_KEY).getAsString());
     }
   }
@@ -136,8 +149,9 @@ public class InheritanceTest extends TestCase {
     assertTrue(json.contains(Sub.SUB_NAME));
   }
 
+  @DopplHacks //final field and reflection doesn't work
   private static class SubTypeOfNested extends Nested {
-    private final long value = 5;
+    private /*final */long value = 5;
 
     public SubTypeOfNested(BagOfPrimitives primitive1, BagOfPrimitives primitive2) {
       super(primitive1, primitive2);
@@ -147,6 +161,64 @@ public class InheritanceTest extends TestCase {
     public void appendFields(StringBuilder sb) {
       sb.append("\"value\":").append(value).append(",");
       super.appendFields(sb);
+    }
+  }
+
+  public void testFinalReflection()throws Exception
+  {
+    Unsafe unsafe = Unsafe.getUnsafe();
+    Class<?> unsafeClass = unsafe.getClass();
+    final Method allocateInstance = unsafeClass.getMethod("allocateInstance", Class.class);
+
+    Parent parent = (Parent) allocateInstance.invoke(unsafe, Parent.class);
+    Field theChild1 = Parent.class.getDeclaredField("theChild1");
+    Field theChild2 = Parent.class.getDeclaredField("theChild2");
+
+    theChild1.setAccessible(true);
+    theChild2.setAccessible(true);
+    theChild1.set(parent, new Child(1, 2, true, "blue"));
+    theChild2.set(parent, new Child(3, 4, false, "floor"));
+
+    Child reflected = (Child) theChild1.get(parent);
+    assertEquals(1, reflected.longValue);
+  }
+
+  private static class Parent
+  {
+    private final long value = 5;
+    private final Child theChild1;
+    private final Child theChild2;
+
+    public Parent(Child theChild1, Child theChild2) {
+      this.theChild1 = theChild1;
+      this.theChild2 = theChild2;
+    }
+  }
+
+  private static class Child
+  {
+    public long longValue;
+    public int intValue;
+    public boolean booleanValue;
+    public String stringValue;
+
+    public Child(long longValue, int intValue, boolean booleanValue, String stringValue) {
+      this.longValue = longValue;
+      this.intValue = intValue;
+      this.booleanValue = booleanValue;
+      this.stringValue = stringValue;
+    }
+  }
+
+  private static class BasicFinal {
+    public final long value = 5;
+
+    public String getExpectedJson() {
+      StringBuilder sb = new StringBuilder();
+      sb.append("{");
+      sb.append("\"value\":").append(value);
+      sb.append("}");
+      return sb.toString();
     }
   }
 
@@ -173,21 +245,21 @@ public class InheritanceTest extends TestCase {
     sortedSet.add('d');
     ClassWithSubInterfacesOfCollection target =
         new ClassWithSubInterfacesOfCollection(list, queue, set, sortedSet);
-    assertEquals(target.getExpectedJson(), gson.toJson(target));
+    JsonCompare.jsonSameAssert(target.getExpectedJson(), gson.toJson(target));
   }
 
   public void testSubInterfacesOfCollectionDeserialization() throws Exception {
     String json = "{\"list\":[0,1,2,3],\"queue\":[0,1,2,3],\"set\":[0.1,0.2,0.3,0.4],"
         + "\"sortedSet\":[\"a\",\"b\",\"c\",\"d\"]"
         + "}";
-    ClassWithSubInterfacesOfCollection target = 
+    ClassWithSubInterfacesOfCollection target =
       gson.fromJson(json, ClassWithSubInterfacesOfCollection.class);
     assertTrue(target.listContains(0, 1, 2, 3));
     assertTrue(target.queueContains(0, 1, 2, 3));
     assertTrue(target.setContains(0.1F, 0.2F, 0.3F, 0.4F));
     assertTrue(target.sortedSetContains('a', 'b', 'c', 'd'));
   }
-  
+
   private static class ClassWithSubInterfacesOfCollection {
     private List<Integer> list;
     private Queue<Long> queue;

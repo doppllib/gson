@@ -17,10 +17,12 @@
 package com.google.gson;
 
 import com.google.gson.reflect.TypeToken;
+
+import junit.framework.TestCase;
+
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
-import junit.framework.TestCase;
 
 /**
  * Unit test for the default JSON map serialization object located in the
@@ -28,6 +30,7 @@ import junit.framework.TestCase;
  *
  * @author Joel Leitch
  */
+
 public class DefaultMapJsonSerializerTest extends TestCase {
   private Gson gson = new Gson();
 
