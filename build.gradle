@@ -1,0 +1,21 @@
+apply from: '../dopplversions.gradle'
+
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        jcenter()
+        maven { url "https://plugins.gradle.org/m2/" }
+        ivy { url dopplIvyDeploy }
+    }
+    dependencies {
+        classpath 'net.ltgt.gradle:gradle-apt-plugin:0.9'
+        classpath "co.touchlab.doppl:gradle:"+ dopplPluginVersion
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        ivy { url dopplIvyDeploy }
+    }
+}
