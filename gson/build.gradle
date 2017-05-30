@@ -6,7 +6,7 @@ apply plugin: 'maven-publish'
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
-def dopplCoreVersion = '0.7.1-SNAPSHOT'
+def dopplCoreVersion = '0.7.1'
 
 dependencies {
     compile 'junit:junit:4.11'
