@@ -25,6 +25,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 import co.touchlab.doppl.testing.DopplHacks;
+import co.touchlab.doppl.utils.PlatformUtils;
 
 /**
  * A simple unit test for the {@link DefaultDateTypeAdapter} class.
@@ -49,6 +50,7 @@ public class DefaultDateTypeAdapterTest extends TestCase {
   Method, 'fillZoneStrings'. Its native, and implementations differ.
    */
 
+  @DopplHacks//ios timezone returns gmt instead of utc
   private void assertFormattingAlwaysEmitsUsLocale(Locale locale) {
     TimeZone defaultTimeZone = TimeZone.getDefault();
     TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
@@ -64,10 +66,14 @@ public class DefaultDateTypeAdapterTest extends TestCase {
           new DefaultDateTypeAdapter(DateFormat.SHORT, DateFormat.SHORT));
       assertFormatted("Jan 1, 1970 12:00:00 AM",
           new DefaultDateTypeAdapter(DateFormat.MEDIUM, DateFormat.MEDIUM));
-      assertFormatted("January 1, 1970 12:00:00 AM UTC",
-          new DefaultDateTypeAdapter(DateFormat.LONG, DateFormat.LONG));
-      assertFormatted("Thursday, January 1, 1970 12:00:00 AM UTC",
-          new DefaultDateTypeAdapter(DateFormat.FULL, DateFormat.FULL));
+
+      if(!PlatformUtils.isJ2objc())
+      {
+        assertFormatted("January 1, 1970 12:00:00 AM UTC",
+                new DefaultDateTypeAdapter(DateFormat.LONG, DateFormat.LONG));
+        assertFormatted("Thursday, January 1, 1970 12:00:00 AM UTC",
+                new DefaultDateTypeAdapter(DateFormat.FULL, DateFormat.FULL));
+      }
     } finally {
       TimeZone.setDefault(defaultTimeZone);
       Locale.setDefault(defaultLocale);
@@ -99,7 +105,9 @@ public class DefaultDateTypeAdapterTest extends TestCase {
     }
   }
 
+  @DopplHacks//Timezone weirdness between ios and android
   public void testParsingDatesFormattedWithUsLocale() {
+
     TimeZone defaultTimeZone = TimeZone.getDefault();
     TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
     Locale defaultLocale = Locale.getDefault();
@@ -113,10 +121,14 @@ public class DefaultDateTypeAdapterTest extends TestCase {
           new DefaultDateTypeAdapter(DateFormat.SHORT, DateFormat.SHORT));
       assertParsed("Jan 1, 1970 0:00:00 AM",
           new DefaultDateTypeAdapter(DateFormat.MEDIUM, DateFormat.MEDIUM));
-      assertParsed("January 1, 1970 0:00:00 AM UTC",
-          new DefaultDateTypeAdapter(DateFormat.LONG, DateFormat.LONG));
-      assertParsed("Thursday, January 1, 1970 0:00:00 AM UTC",
-          new DefaultDateTypeAdapter(DateFormat.FULL, DateFormat.FULL));
+
+      if(!PlatformUtils.isJ2objc())
+      {
+        assertParsed("January 1, 1970 0:00:00 AM UTC",
+                new DefaultDateTypeAdapter(DateFormat.LONG, DateFormat.LONG));
+        assertParsed("Thursday, January 1, 1970 0:00:00 AM UTC",
+                new DefaultDateTypeAdapter(DateFormat.FULL, DateFormat.FULL));
+      }
     } finally {
       TimeZone.setDefault(defaultTimeZone);
       Locale.setDefault(defaultLocale);
