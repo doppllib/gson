@@ -1,33 +1,24 @@
-# google-gson
+# Doppl Fork
 
-[![Build Status](https://travis-ci.org/google/gson.svg?branch=master)](https://travis-ci.org/google/gson)
+This is a fork of the Google Gson library to provide tests and modifications to support 
+iOS development with J2objc using the [Doppl build framework](http://doppl.co/).
 
-Gson is a Java library that can be used to convert Java Objects into their JSON representation. It can also be used to convert a JSON string to an equivalent Java object.
-Gson can work with arbitrary Java objects including pre-existing objects that you do not have source-code of. 
+## Versions
 
-There are a few open-source projects that can convert Java objects to JSON. However, most of them require that you place Java annotations in your classes; something that you can not do if you do not have access to the source-code. Most also do not fully support the use of Java Generics. Gson considers both of these as very important design goals. 
+[2.6.2](https://github.com/doppllib/gson-forked-doppl/tree/dp-v2.6.2)
 
-###*Gson Goals*
-  * Provide simple `toJson()` and `fromJson()` methods to convert Java objects to JSON and vice-versa
-  * Allow pre-existing unmodifiable objects to be converted to and from JSON
-  * Extensive support of Java Generics
-  * Allow custom representations for objects
-  * Support arbitrarily complex objects (with deep inheritance hierarchies and extensive use of generic types)
+## Usage
 
-###*Gson Download and Maven*
-  * [Gson 2.6.1 Download](http://search.maven.org/#artifactdetails%7Ccom.google.code.gson%7Cgson%7C2.6.1%7Cjar) downloads at Maven Central
-  * For Maven check "Dependency Information" tab, on the left side.
+```groovy
+dependencies {
+    compile 'com.google.code.gson:gson:2.6.2'
+    doppl 'co.doppl.com.google.code.gson:gson:2.6.2.8:doppl'
+}
+```
 
-###*Gson Documentation*
-  * Gson [API](http://google.github.io/gson/apidocs/): Javadocs for the current Gson release
-  * Gson [user guide](https://github.com/google/gson/blob/master/UserGuide.md): This guide contains examples on how to use Gson in your code.
-  * Gson [Roadmap](https://github.com/google/gson/blob/master/CHANGELOG.md): Details of changes in the recent versions
-  * Gson [design document](https://github.com/google/gson/blob/master/GsonDesignDocument.md): This document discusses issues we faced while designing Gson. It also include a comparison of Gson with other Java libraries that can be used for Json conversion
+## Status
 
-Please use the [google-gson Google group](http://groups.google.com/group/google-gson) to discuss Gson, or to post questions. 
-
-###*Gson-related Content Created by Third Parties*
-  * [Gson Tutorial](http://www.studytrails.com/java/json/java-google-json-introduction.jsp) by `StudyTrails`
+Stable. No known memory issues. Minor test issues related to iOS/Java differences.
 
 ###*License*
 
