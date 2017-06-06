@@ -20,7 +20,7 @@ dependencies {
 
 Stable. No known memory issues. Minor test issues related to iOS/Java differences.
 
-###*License*
+### *License*
 
 Gson is released under the [Apache 2.0 license](LICENSE).
 
