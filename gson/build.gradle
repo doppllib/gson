@@ -14,15 +14,15 @@ dependencies {
     compile 'junit:junit:4.11'
     testApt "co.doppl.lib:testapt:$javaCoreVersion"
 
-    provided "co.doppl.lib:androidbase:$javaCoreVersion"
+//    provided "co.doppl.lib:androidbase:$javaCoreVersion"
     testCompile "co.doppl.lib:androidbasetest:$javaCoreVersion"
 
-    doppl "co.doppl.lib:androidbase:$dopplCoreVersion"
+//    doppl "co.doppl.lib:androidbase:$dopplCoreVersion"
     testDoppl "co.doppl.lib:androidbasetest:$dopplCoreVersion"
 }
 
 group = 'co.doppl.com.google.code.gson'
-version = '2.6.2.1-SNAPSHOT'
+version = '2.6.2.1'
 
 ext.bintrayGitUrl = 'https://github.com/doppllib/gson-forked-doppl.git'
 
