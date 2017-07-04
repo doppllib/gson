@@ -7,8 +7,8 @@ apply plugin: 'ivy-publish'
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
-def javaCoreVersion = '0.7.5'
-def dopplCoreVersion = '0.7.5.0'
+def javaCoreVersion = '0.8.0'
+def dopplCoreVersion = '0.8.0.0'
 
 dependencies {
     testCompile 'junit:junit:4.11'
@@ -18,7 +18,7 @@ dependencies {
 }
 
 group = 'co.doppl.com.google.code.gson'
-version = '2.6.2.3-SNAPSHOT'
+version = '2.6.2.3'
 
 ext.bintrayGitUrl = 'https://github.com/doppllib/gson.git'
 
@@ -42,5 +42,5 @@ task runIOSTests(type:Exec, dependsOn: 'dopplDeploy') {
     workingDir '../iostest'
 
     //on windows:
-    commandLine 'xcodebuild', 'test', '-project', 'iostest.xcodeproj', '-scheme', 'iostest', '-destination', 'platform=iOS Simulator,name=iPhone 7,OS=10.3'
+    commandLine 'xcodebuild', 'test', '-project', 'iostest.xcodeproj', '-scheme', 'iostest', '-destination', 'platform=iOS Simulator,name=iPhone 7,OS=10.3.1'
 }
