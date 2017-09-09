@@ -12,7 +12,7 @@ iOS development with J2objc using the [Doppl build framework](http://doppl.co/).
 ```groovy
 dependencies {
     compile 'com.google.code.gson:gson:2.6.2'
-    doppl 'co.doppl.com.google.code.gson:gson:2.6.2.3'
+    doppl 'co.doppl.com.google.code.gson:gson:2.6.2.4'
 }
 ```
 
@@ -24,7 +24,7 @@ Stable. No known memory issues. Minor test issues related to iOS/Java difference
 
 See [docs](http://doppl.co/docs/createlibrary.html) for an overview of our setup and repo org for forked library development.
 
-###*License*
+### *License*
 
 Gson is released under the [Apache 2.0 license](LICENSE).
 
