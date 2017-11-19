@@ -16,16 +16,20 @@
 
 package com.google.gson;
 
+import com.google.gson.doppl.JsonCompare;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+
+import junit.framework.TestCase;
+
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.List;
-import junit.framework.TestCase;
+
 
 public final class MixedStreamTest extends TestCase {
 
@@ -59,7 +63,12 @@ public final class MixedStreamTest extends TestCase {
     gson.toJson(RED_MIATA, Car.class, jsonWriter);
     jsonWriter.endArray();
 
-    assertEquals(CARS_JSON, stringWriter.toString());
+    assertJsonEquals(CARS_JSON, stringWriter.toString());
+  }
+
+  private void assertJsonEquals(String a, String b)
+  {
+    JsonCompare.jsonSameAssert(a, b);
   }
 
   public void testReadMixedStreamed() throws IOException {

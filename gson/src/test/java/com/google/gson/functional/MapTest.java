@@ -16,18 +16,6 @@
 
 package com.google.gson.functional;
 
-import java.lang.reflect.Type;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.ConcurrentNavigableMap;
-import java.util.concurrent.ConcurrentSkipListMap;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.InstanceCreator;
@@ -40,10 +28,23 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.common.TestTypes;
+import com.google.gson.doppl.JsonCompare;
 import com.google.gson.internal.$Gson$Types;
 import com.google.gson.reflect.TypeToken;
 
 import junit.framework.TestCase;
+
+import java.lang.reflect.Type;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ConcurrentNavigableMap;
+import java.util.concurrent.ConcurrentSkipListMap;
 
 /**
  * Functional test for Json serialization and deserialization for Maps
@@ -51,6 +52,7 @@ import junit.framework.TestCase;
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class MapTest extends TestCase {
   private Gson gson;
 
@@ -472,11 +474,11 @@ public class MapTest extends TestCase {
         .enableComplexMapKeySerialization()
         .create();
     String json = gsonWithComplexKeys.toJson(element);
-    assertEquals(expected, json);
+    JsonCompare.jsonSameAssert(expected, json);
 
     Gson gson = new Gson();
     json = gson.toJson(element);
-    assertEquals(expected, json);
+    JsonCompare.jsonSameAssert(expected, json);
   }
 
   public final void testInterfaceTypeMapWithSerializer() {
@@ -504,13 +506,13 @@ public class MapTest extends TestCase {
         .registerTypeAdapter(TestTypes.Base.class, baseTypeAdapter)
         .create();
     String json = gson.toJson(element);
-    assertEquals(expected, json);
+    JsonCompare.jsonSameAssert(expected, json);
 
     gson = new GsonBuilder()
         .registerTypeAdapter(TestTypes.Base.class, baseTypeAdapter)
         .create();
     json = gson.toJson(element);
-    assertEquals(expected, json);
+    JsonCompare.jsonSameAssert(expected, json);
   }
 
   public void testGeneralMapField() throws Exception {
@@ -521,12 +523,12 @@ public class MapTest extends TestCase {
 
     String expected = "{\"map\":{\"string\":\"testString\",\"stringArray\":"
         + "[\"one\",\"two\"],\"objectArray\":[1,2,\"three\"]}}";
-    assertEquals(expected, gson.toJson(map));
+    JsonCompare.jsonSameAssert(expected, gson.toJson(map));
 
     gson = new GsonBuilder()
         .enableComplexMapKeySerialization()
         .create();
-    assertEquals(expected, gson.toJson(map));
+    JsonCompare.jsonSameAssert(expected, gson.toJson(map));
   }
 
   public void testComplexKeysSerialization() {

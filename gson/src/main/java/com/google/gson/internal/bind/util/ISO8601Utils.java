@@ -229,13 +229,16 @@ public class ISO8601Utils
 
                     String act = timezone.getID();
                     if (!act.equals(timezoneId)) {
+                        System.out.println("act: "+ act +"/timezoneId: "+ timezoneId +"/timezone: "+ timezone);
                         /* 22-Jan-2015, tatu: Looks like canonical version has colons, but we may be given
                          *    one without. If so, don't sweat.
                          *   Yes, very inefficient. Hopefully not hit often.
                          *   If it becomes a perf problem, add 'loose' comparison instead.
                          */
                         String cleaned = act.replace(":", "");
-                        if (!cleaned.equals(timezoneId)) {
+                        //J2OBJC had no colons in official time zone values
+                        String tzIdCleaned = timezoneId.replace(":", "");
+                        if (!cleaned.equals(tzIdCleaned)) {
                             throw new IndexOutOfBoundsException("Mismatching time zone indicator: "+timezoneId+" given, resolves to "
                                     +timezone.getID());
                         }

@@ -18,6 +18,7 @@ package com.google.gson;
 
 import com.google.gson.annotations.Since;
 import com.google.gson.internal.Excluder;
+
 import junit.framework.TestCase;
 
 /**
@@ -25,6 +26,7 @@ import junit.framework.TestCase;
  *
  * @author Joel Leitch
  */
+
 public class VersionExclusionStrategyTest extends TestCase {
   private static final double VERSION = 5.0D;
 

@@ -17,10 +17,16 @@ package com.google.gson.internal;
 
 import junit.framework.TestCase;
 
+import java.lang.reflect.InvocationTargetException;
+
+import co.touchlab.doppl.testing.DopplHacks;
+import co.touchlab.doppl.utils.PlatformUtils;
+
 /**
  * Test unsafe allocator instantiation
  * @author Ugljesa Jovanovic
  */
+@DopplHacks //Unsafe can make interfaces and abstract classes
 public final class UnsafeAllocatorInstantiationTest extends TestCase {
 
   public interface Interface {
@@ -37,6 +43,8 @@ public final class UnsafeAllocatorInstantiationTest extends TestCase {
    * to instantiate an interface
    */
   public void testInterfaceInstantiation() {
+    if(PlatformUtils.isJ2objc())
+      return;
     UnsafeAllocator unsafeAllocator = UnsafeAllocator.create();
     try {
       unsafeAllocator.newInstance(Interface.class);
@@ -51,6 +59,8 @@ public final class UnsafeAllocatorInstantiationTest extends TestCase {
    * to instantiate an abstract class
    */
   public void testAbstractClassInstantiation() {
+    if(PlatformUtils.isJ2objc())
+      return;
     UnsafeAllocator unsafeAllocator = UnsafeAllocator.create();
     try {
       unsafeAllocator.newInstance(AbstractClass.class);

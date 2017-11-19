@@ -28,6 +28,7 @@ import junit.framework.TestCase;
  *
  * @author Joel Leitch
  */
+
 public class FieldExclusionTest extends TestCase {
   private static final String VALUE = "blah_1234";
 

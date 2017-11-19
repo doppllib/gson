@@ -16,11 +16,12 @@
 
 package com.google.gson.internal;
 
+import junit.framework.TestCase;
+
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
 
-import junit.framework.TestCase;
 
 public final class GsonTypesTest extends TestCase {
 

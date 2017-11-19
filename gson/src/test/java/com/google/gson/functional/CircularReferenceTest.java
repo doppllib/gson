@@ -15,12 +15,6 @@
  */
 package com.google.gson.functional;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Collection;
-
-import junit.framework.TestCase;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
@@ -29,12 +23,22 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import com.google.gson.common.TestTypes.ClassOverridingEquals;
 
+import junit.framework.TestCase;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Collection;
+
+import co.touchlab.doppl.testing.DopplHacks;
+import co.touchlab.doppl.utils.PlatformUtils;
+
 /**
  * Functional tests related to circular reference detection and error reporting.
  *
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class CircularReferenceTest extends TestCase {
   private Gson gson;
 
@@ -44,7 +48,10 @@ public class CircularReferenceTest extends TestCase {
     gson = new Gson();
   }
 
+  @DopplHacks
   public void testCircularSerialization() throws Exception {
+    if(PlatformUtils.isJ2objc())
+      return;
     ContainsReferenceToSelfType a = new ContainsReferenceToSelfType();
     ContainsReferenceToSelfType b = new ContainsReferenceToSelfType();
     a.children.add(b);
@@ -64,7 +71,10 @@ public class CircularReferenceTest extends TestCase {
     assertFalse(json.contains("ref")); // self-reference is ignored
   }
 
+  @DopplHacks
   public void testSelfReferenceArrayFieldSerialization() throws Exception {
+    if(PlatformUtils.isJ2objc())
+      return;
     ClassWithSelfReferenceArray objA = new ClassWithSelfReferenceArray();
     objA.children = new ClassWithSelfReferenceArray[]{objA};
 
@@ -74,8 +84,10 @@ public class CircularReferenceTest extends TestCase {
     } catch (StackOverflowError expected) {
     }
   }
-
+  @DopplHacks
   public void testSelfReferenceCustomHandlerSerialization() throws Exception {
+    if(PlatformUtils.isJ2objc())
+      return;
     ClassWithSelfReference obj = new ClassWithSelfReference();
     obj.child = obj;
     Gson gson = new GsonBuilder().registerTypeAdapter(ClassWithSelfReference.class, new JsonSerializer<ClassWithSelfReference>() {

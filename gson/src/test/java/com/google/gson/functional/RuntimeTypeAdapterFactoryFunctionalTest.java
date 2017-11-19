@@ -15,12 +15,6 @@
  */
 package com.google.gson.functional;
 
-import java.io.IOException;
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-import junit.framework.TestCase;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -34,9 +28,16 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
+import junit.framework.TestCase;
+
+import java.io.IOException;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 /**
  * Functional tests for the RuntimeTypeAdapterFactory feature in extras.
  */
+
 public final class RuntimeTypeAdapterFactoryFunctionalTest extends TestCase {
 
   private final Gson gson = new Gson();

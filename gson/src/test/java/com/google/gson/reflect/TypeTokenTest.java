@@ -16,18 +16,20 @@
 
 package com.google.gson.reflect;
 
+import junit.framework.TestCase;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.RandomAccess;
 import java.util.Set;
-import junit.framework.TestCase;
 
 /**
  * @author Jesse Wilson
  */
 @SuppressWarnings({"deprecation"})
+
 public final class TypeTokenTest extends TestCase {
 
   List<Integer> listOfInteger = null;

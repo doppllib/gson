@@ -28,6 +28,7 @@ import java.math.BigInteger;
  *
  * @author Joel Leitch
  */
+
 public class JsonPrimitiveTest extends TestCase {
 
   public void testBoolean() throws Exception {

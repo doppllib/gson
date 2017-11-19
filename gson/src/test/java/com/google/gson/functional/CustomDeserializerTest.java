@@ -36,6 +36,7 @@ import java.lang.reflect.Type;
  *
  * @author Joel Leitch
  */
+
 public class CustomDeserializerTest extends TestCase {
   private static final String DEFAULT_VALUE = "test123";
   private static final String SUFFIX = "blah";

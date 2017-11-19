@@ -5,10 +5,12 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.common.TestTypes.BagOfPrimitives;
+
+import junit.framework.TestCase;
+
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import junit.framework.TestCase;
 
 /**
  * Functional tests for {@link Gson#toJsonTree(Object)} and 
@@ -17,6 +19,7 @@ import junit.framework.TestCase;
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class JsonTreeTest extends TestCase {
   private Gson gson;
 

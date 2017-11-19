@@ -15,19 +15,20 @@
  */
 package com.google.gson.functional;
 
-import java.util.Arrays;
-import java.util.Collection;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import junit.framework.TestCase;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import java.util.Arrays;
+import java.util.Collection;
 
 /**
  * Unit tests to validate serialization of parameterized types without explicit types
  *
  * @author Inderjeet Singh
  */
+
 public class RawSerializationTest extends TestCase {
 
   private Gson gson;

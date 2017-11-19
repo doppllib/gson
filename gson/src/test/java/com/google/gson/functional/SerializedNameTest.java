@@ -20,6 +20,7 @@ import com.google.gson.annotations.SerializedName;
 
 import junit.framework.TestCase;
 
+
 public final class SerializedNameTest extends TestCase {
   private final Gson gson = new Gson();
 

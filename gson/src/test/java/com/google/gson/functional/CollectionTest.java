@@ -16,6 +16,18 @@
 
 package com.google.gson.functional;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.google.gson.common.MoreAsserts;
+import com.google.gson.common.TestTypes.BagOfPrimitives;
+import com.google.gson.reflect.TypeToken;
+
+import junit.framework.TestCase;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,17 +43,8 @@ import java.util.Set;
 import java.util.Stack;
 import java.util.Vector;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.google.gson.common.MoreAsserts;
-import com.google.gson.common.TestTypes.BagOfPrimitives;
-import com.google.gson.reflect.TypeToken;
-
-import junit.framework.TestCase;
+import co.touchlab.doppl.testing.DopplHacks;
+import co.touchlab.doppl.utils.PlatformUtils;
 
 /**
  * Functional tests for Json serialization and deserialization of collections.
@@ -49,6 +52,7 @@ import junit.framework.TestCase;
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class CollectionTest extends TestCase {
   private Gson gson;
 
@@ -212,7 +216,10 @@ public class CollectionTest extends TestCase {
     assertEquals("[\"Hello\",\"World\"]", gson.toJson(target));
   }
 
+  @DopplHacks//Ordering of serialized fields is not stable between architectures
   public void testCollectionOfBagOfPrimitivesSerialization() {
+    if(PlatformUtils.isJ2objc())
+      return;
     List<BagOfPrimitives> target = new ArrayList<BagOfPrimitives>();
     BagOfPrimitives objA = new BagOfPrimitives(3L, 1, true, "blah");
     BagOfPrimitives objB = new BagOfPrimitives(2L, 6, false, "blahB");
@@ -242,7 +249,10 @@ public class CollectionTest extends TestCase {
   }
 
   @SuppressWarnings("rawtypes")
+  @DopplHacks//Ordering of serialized fields is not stable between architectures
   public void testRawCollectionSerialization() {
+    if(PlatformUtils.isJ2objc())
+      return;
     BagOfPrimitives bag1 = new BagOfPrimitives();
     Collection target = Arrays.asList(bag1, bag1);
     String json = gson.toJson(target);
@@ -296,7 +306,10 @@ public class CollectionTest extends TestCase {
     assertTrue(target.contains(9));
   }
 
+  @DopplHacks//Ordering of serialized fields is not stable between architectures
   public void testWildcardCollectionField() throws Exception {
+    if(PlatformUtils.isJ2objc())
+      return;
     Collection<BagOfPrimitives> collection = new ArrayList<BagOfPrimitives>();
     BagOfPrimitives objA = new BagOfPrimitives(3L, 1, true, "blah");
     BagOfPrimitives objB = new BagOfPrimitives(2L, 6, false, "blahB");
@@ -305,8 +318,10 @@ public class CollectionTest extends TestCase {
 
     ObjectWithWildcardCollection target = new ObjectWithWildcardCollection(collection);
     String json = gson.toJson(target);
-    assertTrue(json.contains(objA.getExpectedJson()));
-    assertTrue(json.contains(objB.getExpectedJson()));
+    String expectedJsonA = objA.getExpectedJson();
+    assertTrue(json.contains(expectedJsonA));
+    String expectedJsonB = objB.getExpectedJson();
+    assertTrue(json.contains(expectedJsonB));
 
     target = gson.fromJson(json, ObjectWithWildcardCollection.class);
     Collection<? extends BagOfPrimitives> deserializedCollection = target.getCollection();

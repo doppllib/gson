@@ -30,10 +30,10 @@ import com.google.gson.common.TestTypes.BagOfPrimitives;
 import com.google.gson.common.TestTypes.ClassWithCustomTypeConverter;
 import com.google.gson.reflect.TypeToken;
 
-import java.util.Date;
 import junit.framework.TestCase;
 
 import java.lang.reflect.Type;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -45,6 +45,7 @@ import java.util.Set;
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class CustomTypeAdaptersTest extends TestCase {
   private GsonBuilder builder;
 

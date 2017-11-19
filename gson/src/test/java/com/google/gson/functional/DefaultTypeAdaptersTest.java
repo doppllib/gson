@@ -30,6 +30,9 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+
+import junit.framework.TestCase;
+
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Type;
@@ -55,7 +58,6 @@ import java.util.Set;
 import java.util.TimeZone;
 import java.util.TreeSet;
 import java.util.UUID;
-import junit.framework.TestCase;
 
 /**
  * Functional test for Json serialization and deserialization for common classes for which default
@@ -64,6 +66,7 @@ import junit.framework.TestCase;
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class DefaultTypeAdaptersTest extends TestCase {
   private Gson gson;
   private TimeZone oldTimeZone;

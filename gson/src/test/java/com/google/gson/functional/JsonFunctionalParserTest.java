@@ -41,7 +41,8 @@ import java.util.Map;
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
-public class JsonParserTest extends TestCase {
+
+public class JsonFunctionalParserTest extends TestCase {
   private Gson gson;
 
   @Override

@@ -20,6 +20,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Since;
 import com.google.gson.annotations.Until;
 import com.google.gson.common.TestTypes.BagOfPrimitives;
+import com.google.gson.doppl.JsonCompare;
 
 import junit.framework.TestCase;
 
@@ -29,6 +30,7 @@ import junit.framework.TestCase;
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class VersioningTest extends TestCase {
   private static final int A = 0;
   private static final int B = 1;
@@ -97,7 +99,7 @@ public class VersioningTest extends TestCase {
   public void testVersionedGsonWithUnversionedClassesSerialization() {
     Gson gson = builder.setVersion(1.0).create();
     BagOfPrimitives target = new BagOfPrimitives(10, 20, false, "stringValue");
-    assertEquals(target.getExpectedJson(), gson.toJson(target));
+    JsonCompare.jsonSameAssert(target.getExpectedJson(), gson.toJson(target));
   }
 
   public void testVersionedGsonWithUnversionedClassesDeserialization() {

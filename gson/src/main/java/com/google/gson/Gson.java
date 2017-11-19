@@ -55,6 +55,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 import com.google.gson.stream.MalformedJsonException;
+import com.google.j2objc.annotations.Weak;
 
 /**
  * This is the main class for using Gson. Gson is typically used by first constructing a

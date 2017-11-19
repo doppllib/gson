@@ -17,10 +17,13 @@
 package com.google.gson.internal.bind;
 
 import com.google.gson.JsonNull;
-import java.io.IOException;
+
 import junit.framework.TestCase;
 
+import java.io.IOException;
+
 @SuppressWarnings("resource")
+
 public final class JsonTreeWriterTest extends TestCase {
   public void testArray() throws IOException {
     JsonTreeWriter writer = new JsonTreeWriter();

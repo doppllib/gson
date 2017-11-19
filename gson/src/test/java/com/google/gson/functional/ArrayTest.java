@@ -30,12 +30,14 @@ import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
+
 /**
  * Functional tests for Json serialization and deserialization of arrays.
  *
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class ArrayTest extends TestCase {
   private Gson gson;
 

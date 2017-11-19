@@ -17,11 +17,13 @@
 package com.google.gson;
 
 import com.google.gson.common.MoreAsserts;
+
 import junit.framework.TestCase;
 
 /**
  * @author Jesse Wilson
  */
+
 public final class JsonNullTest extends TestCase {
 
   @SuppressWarnings("deprecation")

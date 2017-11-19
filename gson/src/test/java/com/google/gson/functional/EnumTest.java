@@ -27,8 +27,10 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.common.MoreAsserts;
+import com.google.gson.doppl.JsonCompare;
 import com.google.gson.reflect.TypeToken;
 
+import junit.framework.TestCase;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -36,13 +38,13 @@ import java.util.Collection;
 import java.util.EnumSet;
 import java.util.Set;
 
-import junit.framework.TestCase;
 /**
  * Functional tests for Java 5.0 enums.
  *
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class EnumTest extends TestCase {
 
   private Gson gson;
@@ -85,7 +87,7 @@ public class EnumTest extends TestCase {
 
   public void testClassWithEnumFieldSerialization() throws Exception {
     ClassWithEnumFields target = new ClassWithEnumFields();
-    assertEquals(target.getExpectedJson(), gson.toJson(target));
+    JsonCompare.jsonSameAssert(target.getExpectedJson(), gson.toJson(target));
   }
 
   public void testClassWithEnumFieldDeserialization() throws Exception {
@@ -145,8 +147,8 @@ public class EnumTest extends TestCase {
     MoreAsserts.assertContains(actualJsonList, Roshambo.PAPER);
   }
 
-  public void testEnumCaseMapping() {
-    assertEquals(Gender.MALE, gson.fromJson("\"boy\"", Gender.class));
+  public void testEnumCaseMapping()throws Exception {
+    assertEquals(Gender.MALE,  gson.fromJson("\"boy\"", Gender.class));
     assertEquals("\"boy\"", gson.toJson(Gender.MALE, Gender.class));
   }
 

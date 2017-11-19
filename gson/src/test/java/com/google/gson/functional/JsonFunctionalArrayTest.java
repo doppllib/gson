@@ -17,6 +17,7 @@
 package com.google.gson.functional;
 
 import com.google.gson.JsonArray;
+
 import junit.framework.TestCase;
 
 import java.math.BigInteger;
@@ -26,7 +27,8 @@ import java.math.BigInteger;
  *
  * @author Dillon Dixon
  */
-public class JsonArrayTest extends TestCase {
+
+public class JsonFunctionalArrayTest extends TestCase {
 
   public void testStringPrimitiveAddition() {
     JsonArray jsonArray = new JsonArray();

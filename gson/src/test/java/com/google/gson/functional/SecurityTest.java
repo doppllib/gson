@@ -27,6 +27,7 @@ import junit.framework.TestCase;
  * 
  * @author Inderjeet Singh
  */
+
 public class SecurityTest extends TestCase {
   /**
    * Keep this in sync with Gson.JSON_NON_EXECUTABLE_PREFIX

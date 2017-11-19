@@ -25,6 +25,7 @@ import junit.framework.TestCase;
  *
  * @author Inderjeet Singh
  */
+
 public class InternationalizationTest extends TestCase {
   private Gson gson;
 

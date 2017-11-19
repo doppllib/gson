@@ -31,6 +31,7 @@ import static junit.framework.Assert.assertEquals;
 import static org.junit.Assume.assumeTrue;
 
 @RunWith(Parameterized.class)
+
 public class JsonReaderPathTest {
   @Parameterized.Parameters(name = "{0}")
   public static List<Object[]> parameters() {

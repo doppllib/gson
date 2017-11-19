@@ -19,9 +19,11 @@ package com.google.gson.functional;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.common.TestTypes.BagOfPrimitives;
+
+import junit.framework.TestCase;
+
 import java.util.ArrayList;
 import java.util.List;
-import junit.framework.TestCase;
 
 /**
  * Performs some functional test involving JSON output escaping.
@@ -29,6 +31,7 @@ import junit.framework.TestCase;
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class EscapingTest extends TestCase {
   private Gson gson;
 

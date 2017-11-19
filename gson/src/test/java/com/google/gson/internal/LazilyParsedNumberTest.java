@@ -17,6 +17,7 @@ package com.google.gson.internal;
 
 import junit.framework.TestCase;
 
+
 public class LazilyParsedNumberTest extends TestCase {
   public void testHashCode() {
     LazilyParsedNumber n1 = new LazilyParsedNumber("1");

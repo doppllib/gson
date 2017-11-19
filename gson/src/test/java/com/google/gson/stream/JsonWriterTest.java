@@ -24,6 +24,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 @SuppressWarnings("resource")
+
 public final class JsonWriterTest extends TestCase {
 
   public void testTopLevelValueTypes() throws IOException {

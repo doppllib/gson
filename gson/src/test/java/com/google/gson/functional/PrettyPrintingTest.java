@@ -15,6 +15,14 @@
  */
 package com.google.gson.functional;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.common.TestTypes.ArrayOfObjects;
+import com.google.gson.common.TestTypes.BagOfPrimitives;
+import com.google.gson.reflect.TypeToken;
+
+import junit.framework.TestCase;
+
 import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -22,20 +30,13 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import junit.framework.TestCase;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.common.TestTypes.ArrayOfObjects;
-import com.google.gson.common.TestTypes.BagOfPrimitives;
-import com.google.gson.reflect.TypeToken;
-
 /**
  * Functional tests for pretty printing option.
  *
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class PrettyPrintingTest extends TestCase {
 
   private static final boolean DEBUG = false;

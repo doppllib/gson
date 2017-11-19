@@ -16,11 +16,12 @@
 
 package com.google.gson;
 
+import junit.framework.TestCase;
+
 import java.lang.reflect.Type;
 import java.math.BigInteger;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
-import junit.framework.TestCase;
 
 /**
  * Contains numerous tests involving registered type converters with a Gson instance.
@@ -28,6 +29,7 @@ import junit.framework.TestCase;
  * @author Inderjeet Singh
  * @author Joel Leitch
  */
+
 public class GsonTypeAdapterTest extends TestCase {
   private Gson gson;
 
