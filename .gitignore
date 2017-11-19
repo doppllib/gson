@@ -14,3 +14,7 @@ release.properties
 classes
 
 .DS_Store
+
+build
+.gradle
+local.properties
