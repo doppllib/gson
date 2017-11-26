@@ -2,16 +2,19 @@ apply plugin: 'java'
 apply plugin: 'net.ltgt.apt'
 apply plugin: 'co.doppl.gradle'
 apply plugin: 'maven-publish'
-apply plugin: 'ivy-publish'
+apply plugin: 'build-time-tracker'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
-def javaCoreVersion = '0.8.5'
-def dopplCoreVersion = '0.8.5.0'
+def javaCoreVersion = '0.8.7'
+def dopplCoreVersion = '0.8.7.0'
 
 dependencies {
-    testCompile 'junit:junit:4.11'
+
+    testCompile "junit:junit:$doppl_junit_java"
+    testDoppl "co.doppl.junit:junit:$doppl_junit_doppl"
+
     testApt "co.doppl.lib:testapt:$javaCoreVersion"
     testCompile "co.doppl.lib:androidbasetest:$javaCoreVersion"
     testDoppl "co.doppl.lib:androidbasetest:$dopplCoreVersion"
@@ -29,6 +32,26 @@ test{
     enabled = false
 }
 
+buildtimetracker {
+    reporters {
+        csv {
+            output "build/times.csv"
+            append true
+            header false
+        }
+
+        summary {
+            ordered false
+            threshold 50
+            barstyle "unicode"
+        }
+
+        csvSummary {
+            csv "build/times.csv"
+        }
+    }
+}
+
 dopplConfig {
 
     cycleFinderArgs '--whitelist', 'cycle_whitelist.txt'
@@ -36,6 +59,9 @@ dopplConfig {
     copyTestOutput "../iostest/gsonframework/test"
     copyDependencies true
 
+    testFramework {
+        libJunit = false
+    }
 }
 
 task runIOSTests(type:Exec, dependsOn: 'dopplDeploy') {
