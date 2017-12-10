@@ -30,6 +30,8 @@ import com.google.gson.internal.Streams;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.google.j2objc.annotations.WeakOuter;
+
 import java.io.IOException;
 import java.lang.reflect.Type;
 
@@ -150,6 +152,7 @@ public final class TreeTypeAdapter<T> extends TypeAdapter<T> {
     }
   }
 
+  @WeakOuter
   private final class GsonContextImpl implements JsonSerializationContext, JsonDeserializationContext {
     @Override public JsonElement serialize(Object src) {
       return gson.toJsonTree(src);

@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		638E15581FDDDFCD00622B00 /* dopplTests.txt in Resources */ = {isa = PBXBuildFile; fileRef = 638E15571FDDDFCD00622B00 /* dopplTests.txt */; };
 		63EFA46F1FC1E8BC0024B6AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EFA46E1FC1E8BC0024B6AA /* AppDelegate.swift */; };
 		63EFA4711FC1E8BC0024B6AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EFA4701FC1E8BC0024B6AA /* ViewController.swift */; };
 		63EFA4741FC1E8BC0024B6AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63EFA4721FC1E8BC0024B6AA /* Main.storyboard */; };
 		63EFA4761FC1E8BC0024B6AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63EFA4751FC1E8BC0024B6AA /* Assets.xcassets */; };
 		63EFA4791FC1E8BC0024B6AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63EFA4771FC1E8BC0024B6AA /* LaunchScreen.storyboard */; };
 		63EFA4841FC1E8BD0024B6AA /* iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EFA4831FC1E8BD0024B6AA /* iosTests.swift */; };
-		63EFA48F1FC1ED8C0024B6AA /* dopplTests.txt in Resources */ = {isa = PBXBuildFile; fileRef = 63EFA48E1FC1ED8B0024B6AA /* dopplTests.txt */; };
 		7898D894779372D3D9A2679A /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D22E6ECC01AC4CCC70B306C8 /* Pods_ios.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +30,7 @@
 /* Begin PBXFileReference section */
 		187A9A863C45F77B3241D018 /* Pods-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.release.xcconfig"; sourceTree = "<group>"; };
 		4581C8E95B6A043153C2DE64 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		638E15571FDDDFCD00622B00 /* dopplTests.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dopplTests.txt; path = ../../gson/build/dopplTests.txt; sourceTree = "<group>"; };
 		63EFA46B1FC1E8BC0024B6AA /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63EFA46E1FC1E8BC0024B6AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63EFA4701FC1E8BC0024B6AA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -40,7 +41,6 @@
 		63EFA47F1FC1E8BD0024B6AA /* iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63EFA4831FC1E8BD0024B6AA /* iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosTests.swift; sourceTree = "<group>"; };
 		63EFA4851FC1E8BD0024B6AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63EFA48E1FC1ED8B0024B6AA /* dopplTests.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dopplTests.txt; path = ../../gson/build/j2objcSrcGenTest/dopplTests.txt; sourceTree = "<group>"; };
 		D22E6ECC01AC4CCC70B306C8 /* Pods_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -97,8 +97,8 @@
 			children = (
 				63EFA46E1FC1E8BC0024B6AA /* AppDelegate.swift */,
 				63EFA4701FC1E8BC0024B6AA /* ViewController.swift */,
+				638E15571FDDDFCD00622B00 /* dopplTests.txt */,
 				63EFA4721FC1E8BC0024B6AA /* Main.storyboard */,
-				63EFA48E1FC1ED8B0024B6AA /* dopplTests.txt */,
 				63EFA4751FC1E8BC0024B6AA /* Assets.xcassets */,
 				63EFA4771FC1E8BC0024B6AA /* LaunchScreen.storyboard */,
 				63EFA47A1FC1E8BC0024B6AA /* Info.plist */,
@@ -211,7 +211,7 @@
 			files = (
 				63EFA4791FC1E8BC0024B6AA /* LaunchScreen.storyboard in Resources */,
 				63EFA4761FC1E8BC0024B6AA /* Assets.xcassets in Resources */,
-				63EFA48F1FC1ED8C0024B6AA /* dopplTests.txt in Resources */,
+				638E15581FDDDFCD00622B00 /* dopplTests.txt in Resources */,
 				63EFA4741FC1E8BC0024B6AA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

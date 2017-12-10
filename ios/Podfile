@@ -1,8 +1,11 @@
 platform :ios, '9.0'
 
+install! 'cocoapods',
+           :deterministic_uuids => false
+
 target 'ios' do
   use_frameworks!
 
-  pod 'testdoppllib', :path => '../gson/build'
+  pod 'testdoppllib', :path => '../gson'
 
 end

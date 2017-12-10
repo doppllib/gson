@@ -1,29 +1,20 @@
 # Doppl Fork
 
-This is a fork of the Google Gson library to provide tests and modifications to support
+This is a fork of the Google Gson library to provide tests and modifications to support 
 iOS development with J2objc using the [Doppl build framework](http://doppl.co/).
-
-## Versions
-
-[2.6.2](https://github.com/doppllib/gson-forked-doppl/tree/dp-v2.6.2)
 
 ## Usage
 
 ```groovy
 dependencies {
-    compile 'com.google.code.gson:gson:2.6.2'
-    doppl 'co.doppl.com.google.code.gson:gson:2.6.2.6'
+    compile 'com.google.code.gson:gson:2.8.2'
+    doppl 'co.doppl.com.google.code.gson:gson:2.8.2.0'
 }
 ```
 
 ## Status
 
 Stable. No known memory issues. Minor test issues related to iOS/Java differences.
-
-## Library Development
-
-See [docs](http://doppl.co/docs/createlibrary.html) for an overview of our setup and repo org for forked library development.
-## Usage
 
 ###*License*
 
