@@ -20,10 +20,6 @@ dependencies {
 
 Stable. No known memory issues. Minor test issues related to iOS/Java differences.
 
-## Library Development
-
-See [docs](http://doppl.co/docs/createlibrary.html) for an overview of our setup and repo org for forked library development.
-
 ###*License*
 
 Gson is released under the [Apache 2.0 license](LICENSE).
