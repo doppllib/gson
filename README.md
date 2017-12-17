@@ -3,10 +3,6 @@
 This is a fork of the Google Gson library to provide tests and modifications to support 
 iOS development with J2objc using the [Doppl build framework](http://doppl.co/).
 
-## Versions
-
-[2.6.2](https://github.com/doppllib/gson-forked-doppl/tree/dp-v2.6.2)
-
 ## Usage
 
 ```groovy
