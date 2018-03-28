@@ -1,6 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'net.ltgt.apt'
-apply plugin: 'co.doppl.gradle'
+apply plugin: 'org.j2objcgradle.gradle'
 apply plugin: 'maven-publish'
 apply plugin: 'build-time-tracker'
 
@@ -13,11 +13,11 @@ def dopplCoreVersion = doppl_core_doppl
 dependencies {
 
     testCompile "junit:junit:$doppl_junit_java"
-    testDoppl "co.doppl.junit:junit:$doppl_junit_doppl"
+    testJ2objc "org.j2objcgradle.junit:junit:$doppl_junit_doppl"
 
     testApt "co.doppl.lib:testapt:$javaCoreVersion"
     testCompile "co.doppl.lib:androidbasetest:$javaCoreVersion"
-    testDoppl "co.doppl.lib:androidbasetest:$dopplCoreVersion"
+    testJ2objc "co.doppl.lib:androidbasetest:$dopplCoreVersion"
 }
 
 group = 'co.doppl.com.google.code.gson'
@@ -25,8 +25,8 @@ version = doppl_gson282_doppl
 
 ext.bintrayGitUrl = 'https://github.com/doppllib/gson.git'
 
-apply from: "$dopplSharedScriptHome/doppllibpublish.gradle"
-apply from: "$dopplSharedScriptHome/bintray.gradle"
+apply from: "https://raw.githubusercontent.com/doppllib/gradlescripts/master/doppllibpublish.gradle"
+apply from: "https://raw.githubusercontent.com/doppllib/gradlescripts/master/bintray.gradle"
 
 test{
     enabled = false
@@ -52,13 +52,11 @@ buildtimetracker {
     }
 }
 
-dopplConfig {
+j2objcConfig {
 //    cycleFinderArgs '--whitelist', 'cycle_whitelist.txt'
 }
 
-task runIOSTests(type:Exec, dependsOn: 'dopplDeploy') {
-    workingDir '../iostest'
-
-    //on windows:
-    commandLine 'xcodebuild', 'test', '-project', 'iostest.xcodeproj', '-scheme', 'iostest', '-destination', 'platform=iOS Simulator,name=iPhone 7,OS=11.0'
+task runIOSTests(type:Exec, dependsOn: 'j2objcBuild') {
+    workingDir '../ios'
+    commandLine 'xcodebuild', 'test', '-workspace', 'ios.xcworkspace', '-scheme', 'ios', '-destination', 'platform=iOS Simulator,name=iPhone 7,OS=latest'
 }
