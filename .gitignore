@@ -7,8 +7,7 @@ target
 pom.xml.*
 release.properties
 
-doppllib.podspec
-testdoppllib.podspec
+*.podspec
 
 .idea
 *.iml

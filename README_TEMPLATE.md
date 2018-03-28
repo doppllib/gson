@@ -8,7 +8,7 @@ iOS development with J2objc using the [Doppl build framework](http://doppl.co/).
 ```groovy
 dependencies {
     compile 'com.google.code.gson:gson:2.6.2'
-    doppl '{{GROUP}}:gson:{{VERSION}}'
+    j2objc '{{GROUP}}:gson:{{VERSION}}'
 }
 ```
 

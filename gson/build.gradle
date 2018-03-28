@@ -1,6 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'net.ltgt.apt'
-apply plugin: 'co.doppl.gradle'
+apply plugin: 'org.j2objcgradle.gradle'
 apply plugin: 'maven-publish'
 apply plugin: 'ivy-publish'
 
@@ -12,14 +12,14 @@ def dopplCoreVersion = doppl_core_doppl
 
 dependencies {
     testCompile "junit:junit:$doppl_junit_java"
-    testDoppl "co.doppl.junit:junit:$doppl_junit_doppl"
+    testJ2objc "org.j2objcgradle.junit:junit:$doppl_junit_doppl"
 
     testApt "co.doppl.lib:testapt:$javaCoreVersion"
     testCompile "co.doppl.lib:androidbasetest:$javaCoreVersion"
-    testDoppl "co.doppl.lib:androidbasetest:$dopplCoreVersion"
+    testJ2objc "co.doppl.lib:androidbasetest:$dopplCoreVersion"
 }
 
-group = 'co.doppl.com.google.code.gson'
+group = 'org.j2objcgradle.com.google.code.gson'
 version = doppl_gson262_doppl
 
 ext.bintrayGitUrl = 'https://github.com/doppllib/gson.git'
@@ -31,13 +31,11 @@ test{
     enabled = false
 }
 
-dopplConfig {
+j2objcConfig {
     cycleFinderArgs '--whitelist', 'cycle_whitelist.txt'
 }
 
-task runIOSTests(type:Exec, dependsOn: 'dopplBuild') {
+task runIOSTests(type:Exec, dependsOn: 'j2objcBuild') {
     workingDir '../ios'
-
-    //on windows:
-    commandLine 'xcodebuild', 'test', '-project', 'ios.xcodeproj', '-scheme', 'ios', '-destination', 'platform=iOS Simulator,name=iPhone 7,OS=latest'
+    commandLine 'xcodebuild', 'test', '-workspace', 'ios.xcworkspace', '-scheme', 'ios', '-destination', 'platform=iOS Simulator,name=iPhone 7,OS=latest'
 }

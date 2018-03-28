@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import testdoppllib
+import testj2objclib
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        CoTouchlabDopplTestingDopplJunitTestHelper.runResource(with: "dopplTests.txt")
+        //CoTouchlabDopplTestingDopplJunitTestHelper.runResource(with: "j2objcTests.txt")
         return true
     }
 
