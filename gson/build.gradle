@@ -24,8 +24,10 @@ version = doppl_gson262_doppl
 
 ext.bintrayGitUrl = 'https://github.com/doppllib/gson.git'
 
-apply from: "$dopplSharedScriptHome/doppllibpublish.gradle"
-apply from: "$dopplSharedScriptHome/bintray.gradle"
+//apply from: "$dopplSharedScriptHome/doppllibpublish.gradle"
+apply from: "https://raw.githubusercontent.com/doppllib/gradlescripts/master/doppllibpublish.gradle"
+//apply from: "$dopplSharedScriptHome/bintray.gradle"
+apply from: "https://raw.githubusercontent.com/doppllib/gradlescripts/master/bintray.gradle"
 
 test{
     enabled = false
