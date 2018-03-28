@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import ios
+import testj2objclib
 
 class iosTests: XCTestCase {
     
@@ -21,16 +22,8 @@ class iosTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testJ2objcCode() {
+        XCTAssertEqual(CoTouchlabDopplTestingDopplJunitTestHelper.runResource(with: "j2objcTests.txt"), 0)
     }
     
 }

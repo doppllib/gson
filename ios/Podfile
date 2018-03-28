@@ -5,7 +5,10 @@ install! 'cocoapods',
 
 target 'ios' do
   use_frameworks!
+  pod 'testj2objclib', :path => '../gson'
+end
 
-  pod 'testdoppllib', :path => '../gson'
-
+target 'iosTests' do
+  use_frameworks!
+  pod 'testj2objclib', :path => '../gson'
 end
