@@ -14,6 +14,8 @@ dependencies {
 
 ## Status
 
+[![Build status](https://build.appcenter.ms/v0.1/apps/db3e8d75-8d99-496c-9b3a-4445a574a4f1/branches/j2objc-2.6.2/badge)](https://appcenter.ms)
+
 Stable. No known memory issues. Minor test issues related to iOS/Java differences.
 
 ###*License*
